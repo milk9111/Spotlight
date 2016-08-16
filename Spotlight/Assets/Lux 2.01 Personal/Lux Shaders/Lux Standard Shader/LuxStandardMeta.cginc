@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 #ifndef UNITY_STANDARD_META_INCLUDED
 #define UNITY_STANDARD_META_INCLUDED
 
@@ -38,7 +40,7 @@ v2f_meta vert_meta (LuxVertexInput v)
 	o.uv = LuxTexCoords(v);
 	o.color = v.color;
 	o.normalWorld = UnityObjectToWorldNormal(v.normal);
-	float4 posWorld = mul(_Object2World, v.vertex);
+	float4 posWorld = mul(unity_ObjectToWorld, v.vertex);
 	o.posWorld.xyz = posWorld.xyz;
 	o.posWorld.w = distance(_WorldSpaceCameraPos, posWorld);
 	#if defined (_PARALLAXMAP)

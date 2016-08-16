@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 #ifndef TERRAIN_SPLATMAP_COMMON_CGINC_INCLUDED
 #define TERRAIN_SPLATMAP_COMMON_CGINC_INCLUDED
 
@@ -43,7 +45,7 @@ void SplatmapVert(inout appdata_full v, out Input data)
 	// Store FlowDirection
 	//data.lux_flowDirection = ( mul(rotation, mul(_World2Object, float4(0,1,0,0)).xyz) ).xy;
 	// Store world position and distance to camera
-	float3 worldPosition = mul(_Object2World, v.vertex);
+	float3 worldPosition = mul(unity_ObjectToWorld, v.vertex);
 	data.lux_worldPosDistance.xyz = worldPosition;
 	data.lux_worldPosDistance.w = distance(_WorldSpaceCameraPos, worldPosition);
 

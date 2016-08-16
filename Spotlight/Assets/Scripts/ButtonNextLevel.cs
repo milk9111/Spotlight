@@ -6,6 +6,7 @@ public class ButtonNextLevel : MonoBehaviour {
 
     public MovingPlatform[] resetObjects;
 
+
     public void Restart()
     {
         int scene = SceneManager.GetActiveScene().buildIndex;
@@ -23,6 +24,7 @@ public class ButtonNextLevel : MonoBehaviour {
     public void NextLevelButton(string theLevelNum)
     {
         SceneManager.LoadScene(theLevelNum);
+		//UnlockButtons.finishedLevels++;
     }
 
     public void LevelSelect()

@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Hidden/TerrainEngine/Splatmap/Lux-Standard-Base" {
 	Properties {
 		_MainTex ("Base (RGB) Smoothness (A)", 2D) = "white" {}
@@ -91,7 +93,7 @@ Shader "Hidden/TerrainEngine/Splatmap/Lux-Standard-Base" {
 			v.tangent.xyz = cross(v.normal, float3(0,0,1));
 			v.tangent.w = -1;
 			// Store world position and distance to camera
-			float3 worldPosition = mul(_Object2World, v.vertex);
+			float3 worldPosition = mul(unity_ObjectToWorld, v.vertex);
 			o.lux_worldPosDistance.xyz = worldPosition;
 			o.lux_worldPosDistance.w = distance(_WorldSpaceCameraPos, worldPosition);
 		}

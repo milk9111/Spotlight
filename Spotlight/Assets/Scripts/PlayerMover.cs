@@ -42,7 +42,7 @@ public class PlayerMover : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Platform")
-        {
+		{
             Cursor.visible = true;
             TimerCount time = timer.GetComponent<TimerCount>();
             time.setKeepGoing(false);
@@ -79,14 +79,7 @@ public class PlayerMover : MonoBehaviour {
             levelSelectButton.SetActive(true);
             nextLevelButton.SetActive(true);
 
-            if (Time.timeScale == 1)
-            {
-                Time.timeScale = 0;
-            }
-            else
-            {
-                Time.timeScale = 1;
-            }
+			checkTimeScale ();
 
             isDone = true;
         }
@@ -116,7 +109,6 @@ public class PlayerMover : MonoBehaviour {
             //jump
             if (Input.GetKeyDown(KeyCode.Space) && GetComponent<Rigidbody>().velocity.y <= 40)
             {
-                Debug.Log(canDoubleJump);
                 if (IsGrounded())
                 {
                     GetComponent<Rigidbody>().AddForce(0, jumpHeight, 0, ForceMode.Impulse);
@@ -148,13 +140,18 @@ public class PlayerMover : MonoBehaviour {
         RestartButton.SetActive(!RestartButton.activeSelf);
         levelSelectButton.SetActive(!levelSelectButton.activeSelf);
 
-        if (Time.timeScale == 1)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+		checkTimeScale();
     }
+
+	private void checkTimeScale()
+	{
+		if (Time.timeScale == 1)
+		{
+			Time.timeScale = 0;
+		}
+		else
+		{
+			Time.timeScale = 1;
+		}
+	}
 }

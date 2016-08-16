@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 #ifndef LUX_STANDARD_SHADOW_INCLUDED
 #define LUX_STANDARD_SHADOW_INCLUDED
 
@@ -162,7 +164,7 @@ void vertShadowCaster (VertexInput v,
 			#if defined (GEOM_TYPE_BRANCH_DETAIL) && !defined(GEOM_TYPE_LEAF)
 				o.color = v.color;
 			#endif
-			float4 posWorld = mul(_Object2World, v.vertex);
+			float4 posWorld = mul(unity_ObjectToWorld, v.vertex);
 			o.posWorld.xyz = posWorld.xyz;
 			o.posWorld.w = distance(_WorldSpaceCameraPos, posWorld);
 		#endif

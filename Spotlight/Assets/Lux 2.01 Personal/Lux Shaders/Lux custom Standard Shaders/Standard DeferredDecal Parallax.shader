@@ -1,4 +1,7 @@
-﻿// Based on the work of bac9-flcl and Dolkar
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
+// Based on the work of bac9-flcl and Dolkar
 // http://forum.unity3d.com/threads/how-do-i-write-a-normal-decal-shader-using-a-newly-added-unity-5-2-finalgbuffer-modifier.356644/page-2
 
 Shader "Lux/Deferred Decals/Standard Lighting/Parallax" 
@@ -82,9 +85,9 @@ Shader "Lux/Deferred Decals/Standard Lighting/Parallax"
 			float3 binormal = cross( v.normal, v.tangent.xyz ) * v.tangent.w;
 			float3x3 rotation = float3x3( v.tangent.xyz, binormal, v.normal.xyz );
 			// Store FlowDirection
-			o.lux_flowDirection = ( mul(rotation, mul(_World2Object, float4(0,1,0,0)).xyz) ).xy;
+			o.lux_flowDirection = ( mul(rotation, mul(unity_WorldToObject, float4(0,1,0,0)).xyz) ).xy;
 			// Store world position and distance to camera
-			float3 worldPosition = mul(_Object2World, v.vertex);
+			float3 worldPosition = mul(unity_ObjectToWorld, v.vertex);
 			o.lux_worldPosDistance.xyz = worldPosition;
 			o.lux_worldPosDistance.w = distance(_WorldSpaceCameraPos, worldPosition);
 		}
@@ -181,7 +184,7 @@ Shader "Lux/Deferred Decals/Standard Lighting/Parallax"
 			// Store FlowDirection
 			// o.lux_flowDirection = ( mul(rotation, mul(_World2Object, float4(0,1,0,0)).xyz) ).xy;
 			// Store world position and distance to camera
-			float3 worldPosition = mul(_Object2World, v.vertex);
+			float3 worldPosition = mul(unity_ObjectToWorld, v.vertex);
 			o.lux_worldPosDistance.xyz = worldPosition;
 			o.lux_worldPosDistance.w = distance(_WorldSpaceCameraPos, worldPosition);
 		}
