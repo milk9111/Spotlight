@@ -13,12 +13,12 @@ public class ButtonNextLevel : MonoBehaviour {
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
         Cursor.visible = false;
 
-        int index = 0;
+        /*int index = 0;
         while (index < resetObjects.Length)
         {
             resetObjects[index].t = 0;  
             index++;
-        }
+        }*/
     }
 
     public void NextLevelButton(string theLevelNum)

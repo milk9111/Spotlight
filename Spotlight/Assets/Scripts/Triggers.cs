@@ -35,12 +35,16 @@ public class Triggers : MonoBehaviour {
 
     void OnTriggerEnter(Collider c)
     {
-        if (tag == "Tutorial")
-        {
-            Debug.Log("inside tutorial");
-            tutorial.GetComponent<Text>().text = tutorialMessage;
-            tutorial.SetActive(true);
-        }
+		if (tag == "Tutorial") {
+			tutorial.GetComponent<Text> ().text = tutorialMessage;
+			tutorial.SetActive (true);
+		} 
+		/*if (tag == "Teleport") {
+			gSwap = false;
+			player.GetComponent<Rigidbody>().useGravity = true;
+			//player.GetComponent<Rigidbody>().AddForce(0, -5, 0, ForceMode.Acceleration);
+		}*/
+
     }
 
     void OnTriggerExit(Collider c)
