@@ -74,6 +74,7 @@
      <None Include="Assets\Lux 2.01 Personal\Lux Shaders\Lux custom Standard Shaders\Standard DeferredDecal FullFeatures.shader" />
      <None Include="Assets\Lux 2.01 Personal\Lux Shaders\Lux Core\Lux Features\LuxDynamicWeather.cginc" />
      <None Include="Assets\Lux 2.01 Personal\Lux Shaders\Lux custom Standard Shaders\Standard FullFeatures DoubleSided Cutout.shader" />
+     <None Include="Assets\Imports\Piplay\Male Base Character\Docs\MaleCharacterAnimation.txt" />
      <None Include="Assets\Lux 2.01 Personal\Lux Demos\Art\Textures\LASciFiPanel - free from asset store\LASciFiPanel\_ProductFeatures.txt" />
      <None Include="Assets\Lux 2.01 Personal\Lux Shaders\Lux Core\Lux BRDFs\LuxStandardBRDF.cginc" />
      <None Include="Assets\Lux 2.01 Personal\Lux Shaders\Lux Core\Resources\Lux Personal Internal-DeferredReflections.shader" />

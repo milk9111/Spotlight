@@ -56,29 +56,13 @@ public class PlayerMover : MonoBehaviour {
 
     public bool IsGrounded()
     {
-		/*RaycastHit2D[] hits = new RaycastHit2D[2];
-		int h = Physics2D.RaycastNonAlloc (transform.position, -Vector2.up, hits);
-
-		float angle;
-		bool jump = false;
-		if (h > 1) {
-			angle = Mathf.Abs (Mathf.Atan2 (hits [1].normal.x, hits [1].normal.y) * Mathf.Rad2Deg);
-			angle = angle * Mathf.Deg2Rad;
-			jump = Physics2D.Raycast(transform.position, new Vector2 (Mathf.Sin(angle), Mathf.Cos(angle)));
-		}*/
-
-
-
-        bool jump = Physics.Raycast(transform.position, -Vector2.up, distToGround.y + 0.1f);
+		bool jump = Physics.Raycast(transform.position, -transform.up, distToGround.y + 0.1f);
 		//check 45 degree on right side
-		jump = jump || Physics.Raycast(transform.position, Vector2.right - Vector2.up, distToGround.x + 0.1f);
+		jump = jump || Physics.Raycast(transform.position, transform.right - transform.up, distToGround.x + 0.1f);
 		//check 45 degree on left side
-		jump = jump || Physics.Raycast(transform.position, -Vector2.right - Vector2.up, distToGround.x + 0.1f);
-		if (jump) {
-			return jump;
-		} else {
-			return jump;
-		}
+		jump = jump || Physics.Raycast(transform.position, -transform.right - transform.up, distToGround.x + 0.1f);
+
+		return jump;
     }
 
     public bool GetIsDone()
@@ -105,8 +89,8 @@ public class PlayerMover : MonoBehaviour {
         }
     }
 
-    void Update () {
-        if (!isDone)
+    void FixedUpdate () {
+		if (!isDone && player != null)
         {
             //pause game
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -152,6 +136,12 @@ public class PlayerMover : MonoBehaviour {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
         }
     }
+
+	void LateUpdate () {
+		if (!IsGrounded ()) {
+			transform.rotation = new Quaternion (0, 0, 0, 0);
+		}
+	}
 
     private void pauseGame()
     {
