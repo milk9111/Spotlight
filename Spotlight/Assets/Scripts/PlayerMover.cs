@@ -19,6 +19,8 @@ public class PlayerMover : MonoBehaviour {
     public GameObject myExplosion;
 
     public bool isDone;
+    public bool notMoving;
+
     private bool canDoubleJump = false;
 
     private Vector3 distToGround;
@@ -90,7 +92,7 @@ public class PlayerMover : MonoBehaviour {
     }
 
     void FixedUpdate () {
-		if (!isDone && player != null)
+		if (!isDone && player != null && !notMoving)
         {
             //pause game
             if (Input.GetKeyDown(KeyCode.Escape))
